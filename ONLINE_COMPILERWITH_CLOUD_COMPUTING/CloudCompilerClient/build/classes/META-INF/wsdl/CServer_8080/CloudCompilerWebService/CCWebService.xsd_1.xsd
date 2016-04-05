@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. --><xs:schema xmlns:tns="http://MyPack/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://MyPack/">
+
+<xs:element name="AddMessage" type="tns:AddMessage"/>
+
+<xs:element name="AddMessageResponse" type="tns:AddMessageResponse"/>
+
+<xs:element name="FetchTaskList" type="tns:FetchTaskList"/>
+
+<xs:element name="FetchTaskListResponse" type="tns:FetchTaskListResponse"/>
+
+<xs:element name="GetMyMessages" type="tns:GetMyMessages"/>
+
+<xs:element name="GetMyMessagesResponse" type="tns:GetMyMessagesResponse"/>
+
+<xs:element name="Login" type="tns:Login"/>
+
+<xs:element name="LoginResponse" type="tns:LoginResponse"/>
+
+<xs:element name="UpdateUser" type="tns:UpdateUser"/>
+
+<xs:element name="UpdateUserResponse" type="tns:UpdateUserResponse"/>
+
+<xs:element name="addUser" type="tns:addUser"/>
+
+<xs:element name="addUserResponse" type="tns:addUserResponse"/>
+
+<xs:element name="chechUID" type="tns:chechUID"/>
+
+<xs:element name="chechUIDResponse" type="tns:chechUIDResponse"/>
+
+<xs:element name="compileCode" type="tns:compileCode"/>
+
+<xs:element name="compileCodeResponse" type="tns:compileCodeResponse"/>
+
+<xs:element name="executeCode" type="tns:executeCode"/>
+
+<xs:element name="executeCodeResponse" type="tns:executeCodeResponse"/>
+
+<xs:element name="removeMessage" type="tns:removeMessage"/>
+
+<xs:element name="removeMessageResponse" type="tns:removeMessageResponse"/>
+
+<xs:complexType name="executeCode">
+<xs:sequence>
+<xs:element name="code" type="tns:singleCode" minOccurs="0"/>
+<xs:element name="uid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="singleCode">
+<xs:sequence>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
+<xs:element name="mainClassName" type="xs:string" minOccurs="0"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+<xs:element name="codename" type="xs:string" minOccurs="0"/>
+<xs:element name="language" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="executeCodeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddMessage">
+<xs:sequence>
+<xs:element name="mes" type="tns:singleMessage" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="singleMessage">
+<xs:sequence>
+<xs:element name="msgTo" type="xs:string" minOccurs="0"/>
+<xs:element name="msgFrom" type="xs:string" minOccurs="0"/>
+<xs:element name="msgText" type="xs:string" minOccurs="0"/>
+<xs:element name="mid" type="xs:int"/>
+<xs:element name="dateTime" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeMessage">
+<xs:sequence>
+<xs:element name="mid" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateUser">
+<xs:sequence>
+<xs:element name="user" type="tns:singleUser" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="singleUser">
+<xs:sequence>
+<xs:element name="fullName" type="xs:string" minOccurs="0"/>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="contact" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="country" type="xs:string" minOccurs="0"/>
+<xs:element name="userID" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="DOB" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="codes" type="tns:singleCode" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="enabled" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileCode">
+<xs:sequence>
+<xs:element name="code" type="tns:singleCode" minOccurs="0"/>
+<xs:element name="uid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileCodeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FetchTaskList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="FetchTaskListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:singleTask" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="singleTask">
+<xs:sequence>
+<xs:element name="text" type="xs:string" minOccurs="0"/>
+<xs:element name="c" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addUser">
+<xs:sequence>
+<xs:element name="user" type="tns:singleUser" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetMyMessages">
+<xs:sequence>
+<xs:element name="uid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetMyMessagesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:singleMessage" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Login">
+<xs:sequence>
+<xs:element name="uid" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="LoginResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:singleUser" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="chechUID">
+<xs:sequence>
+<xs:element name="uid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="chechUIDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
